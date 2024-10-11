@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Sauna.net"
+run/main_scene="res://Assets/Scenes/node_2d.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="Sauna.net"
+
 [rendering]
 
-renderer/rendering_method="forward_plus"
+textures/canvas_textures/default_texture_filter=0

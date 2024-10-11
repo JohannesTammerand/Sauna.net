@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcmnjyre1fap5"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Player.gd" id="1_ck1m6"]
+[ext_resource type="Texture2D" uid="uid://dm5e076i47qcu" path="res://Assets/Sprites/playerSpriteSheet.png" id="2_vgqls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf4u8"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tevdw"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdnrk"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kty4e"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73y2x"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vowh"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt6yb"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owexa"]
+atlas = ExtResource("2_vgqls")
+region = Rect2(64, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gesk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf4u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tevdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdnrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kty4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73y2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vowh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt6yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owexa")
+}],
+"loop": true,
+"name": &"moveDown",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh7us"]
+size = Vector2(54, 55)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dqr4e"]
+a = Vector2(286.5, 299.5)
+b = Vector2(1181.5, 296.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+z_index = 15
+position = Vector2(340, 4)
+script = ExtResource("1_ck1m6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-3, 0)
+scale = Vector2(4.4375, 3.6875)
+sprite_frames = SubResource("SpriteFrames_gesk0")
+animation = &"moveDown"
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-3, 1.5)
+shape = SubResource("RectangleShape2D_rh7us")
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Sauna" type="ColorRect" parent="Map"]
+offset_left = 140.0
+offset_top = -363.0
+offset_right = 1312.0
+offset_bottom = 183.0
+
+[node name="Shower" type="ColorRect" parent="Map"]
+offset_left = 140.0
+offset_top = 184.0
+offset_right = 1318.0
+offset_bottom = 802.0
+color = Color(0.0666667, 1, 1, 1)
+
+[node name="Cold bath" type="ColorRect" parent="Map"]
+offset_left = 1104.0
+offset_top = 804.0
+offset_right = 1856.0
+offset_bottom = 1201.0
+color = Color(0.0666667, 0.117647, 1, 1)
+
+[node name="Heating" type="ColorRect" parent="Map"]
+offset_left = 139.0
+offset_top = -214.0
+offset_right = 175.0
+offset_bottom = -6.0
+color = Color(1, 0, 0, 1)
+
+[node name="Forest" type="ColorRect" parent="Map"]
+offset_left = -1176.0
+offset_top = -1034.0
+offset_right = 140.0
+offset_bottom = 1015.0
+color = Color(0, 1, 0, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(137.5, -114.5)
+shape = SubResource("SegmentShape2D_dqr4e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(137.5, -114.5)
+shape = SubResource("SegmentShape2D_dqr4e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(137.5, -114.5)
+shape = SubResource("SegmentShape2D_dqr4e")
