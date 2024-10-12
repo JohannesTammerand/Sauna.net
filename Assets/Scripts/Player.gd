@@ -11,6 +11,8 @@ const JUMP_VELOCITY = -400.0
 var lastDir = [0, 0]
 var heat = 0
 var slippery = false
+var hand = "";
+var movementEnabled = true
 
 var directionX
 var directionY
@@ -20,7 +22,8 @@ func _process(_delta):
 		get_tree().reload_current_scene()
 
 func _physics_process(delta):
-	movement(delta)
+	if movementEnabled:
+		movement(delta)
 	animation()
 	HealthBar.value = heat
 
