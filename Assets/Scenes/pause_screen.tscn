@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://p1ld1qmg7iim"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/PauseScreen.gd" id="1_bo8w4"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_bo8w4")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 218.0
+offset_top = 64.0
+offset_right = 840.0
+offset_bottom = 141.0
+text = "PAUSE"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 109.0
+offset_top = 315.0
+offset_right = 233.0
+offset_bottom = 405.0
+text = "Exit"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 774.0
+offset_top = 319.0
+offset_right = 903.0
+offset_bottom = 405.0
+text = "Restart
+"
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 439.0
+offset_top = 485.0
+offset_right = 567.0
+offset_bottom = 577.0
+text = "Resume"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]

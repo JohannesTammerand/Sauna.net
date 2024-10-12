@@ -12,11 +12,21 @@ var lastDir = [0, 0]
 var heat = 0
 var slippery = false
 
+var directionX
+var directionY
+
+func _process(_delta):
+	if heat == 1000:
+		get_tree().reload_current_scene()
+
 func _physics_process(delta):
-	animated_sprite.flip_h = false
-	
-	var directionX = Input.get_axis("ui_left", "ui_right")
-	var directionY = Input.get_axis("ui_up", "ui_down")
+	movement(delta)
+	animation()
+	HealthBar.value = heat
+
+func movement(delta):
+	directionX = Input.get_axis("ui_left", "ui_right")
+	directionY = Input.get_axis("ui_up", "ui_down")
 	if !slippery:
 		if directionX:
 			velocity.x = directionX * SPEED
@@ -35,6 +45,11 @@ func _physics_process(delta):
 			velocity.y = lerpf(velocity.y, SPEED*directionY, 2*delta)
 		else:
 			velocity.y = lerpf(velocity.y, SPEED*directionY, 1*delta)
+			
+	move_and_slide()
+
+func animation():
+	animated_sprite.flip_h = false
 			
 	if directionX > 0:
 		animated_sprite.play("moveRight")
@@ -56,7 +71,3 @@ func _physics_process(delta):
 		animated_sprite.play("idleDown")
 	if directionX || directionY:
 		lastDir = [directionX, directionY]
-	
-	HealthBar.value = heat
-	
-	move_and_slide()
