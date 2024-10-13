@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://beuxftb76tgp7"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/end_screen.gd" id="1_fsy8b"]
+
+[node name="end_screen" type="CanvasLayer"]
+script = ExtResource("1_fsy8b")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 46.0
+offset_right = 659.0
+offset_bottom = 132.0
+text = "Ending :)"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 155.0
+offset_top = 272.0
+offset_right = 323.0
+offset_bottom = 336.0
+text = "Quit
+"
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 734.0
+offset_top = 269.0
+offset_right = 902.0
+offset_bottom = 333.0
+text = "Resume
+"
+
+[node name="EndingsCount" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 388.0
+offset_right = 597.0
+offset_bottom = 442.0
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]

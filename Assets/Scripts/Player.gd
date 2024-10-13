@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var HUD = %HUD
 @onready var HealthBar = HUD.get_child(0)
+@onready var bucket = HUD.get_child(2)
 
 var lastDir = [0, 0]
 var heat = 0
@@ -26,6 +26,13 @@ func _physics_process(delta):
 		movement(delta)
 	animation()
 	HealthBar.value = heat
+	
+	if hand == "":
+		bucket.frame = 0
+	elif hand == "bucket":
+		bucket.frame = 1
+	elif hand == "water":
+		bucket.frame = 2
 
 func movement(delta):
 	directionX = Input.get_axis("ui_left", "ui_right")

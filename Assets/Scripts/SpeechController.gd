@@ -12,9 +12,10 @@ func _process(_delta):
 	if area_2d.has_overlapping_bodies():
 		interactable = true
 		
-		if player.hand == "water" && Input.is_action_just_pressed("interact"):
-			print("ded")
-			pass
+		if player.hand == "water" && Input.is_action_just_pressed("interact") && get_meta("Killable") && !AutoLoad.endingRobot:
+			AutoLoad.endingsFound += 1
+			AutoLoad.endingRobot = true
+			get_tree().change_scene_to_file("res://Assets/Scenes/end_screen.tscn")
 	
 	if !area_2d.has_overlapping_bodies():
 		if interactable:
@@ -23,5 +24,4 @@ func _process(_delta):
 		interactable = false
 	
 	if interactable && Input.is_action_just_pressed("interact"):
-		print("AAAAAAAAAAAAAA")
 		text.show()
